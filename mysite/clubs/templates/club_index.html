@@ -1,0 +1,36 @@
+{% extends 'club_base.html' %}
+{% block main %}
+<div id="main-wrapper">
+	<div id="main" class="container">
+		<div class="row">
+			<div class="12u">
+				<div class="content">
+					<!-- Content -->
+					<article class="box page-content">
+						<header>
+							{% if title_list %}
+							{% for article in title_list %}
+								<a href="{% url 'clubs:article' article.id %}">
+								<h2>{{article.title}}</h2>
+								<p>READ MORE......</p>
+								</a>
+								<p></p>
+							{% endfor %}
+							{% endif %}
+						</header>
+					</article>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="12u">
+				<ul class="actions">
+					<li><a href="{% url 'clubs:create' %}" class="button big" value="ADD NEW PAGE">ADD NEW PAGE</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

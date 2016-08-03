@@ -1,0 +1,20 @@
+{% extends 'index_template.html' %}
+
+{% block title %}高中生活百科{% endblock %}
+
+{% block main %}
+<!-- Banner -->
+	<div id="banner-wrapper">
+		<section id="banner">
+			<p>開放自由編輯，取得高中資訊最方便的渠道</p>
+			<p>編輯前請先加入會員</p>
+			<div class="row">
+				<div class="12u">
+					<ul class="actions">
+						<li><a href="{% url 'register' %}" class="button big">REGISTER</a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+	</div>
+{% endblock %}

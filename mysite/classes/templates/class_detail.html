@@ -1,0 +1,27 @@
+{% extends 'class_base.html' %}
+{% block main %}
+<div id="main-wrapper">
+	<div id="main" class="container">
+		<div class="row">
+			<div class="12u">
+				<div class="content">
+					<!-- Content -->
+					<article class="box page-content">
+						<header>
+						<h2>{{paragraph.title|linebreaksbr}}</h2>
+						<p>{{paragraph.text|linebreaksbr}}</p>
+						</header>
+					</article>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="12u">
+				<ul class="actions">
+					<li><a href="{% url 'classes:edit' paragraph.id %}" class="button big">EDIT THIS PAGE</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

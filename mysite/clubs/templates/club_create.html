@@ -1,0 +1,30 @@
+{% extends 'club_base.html' %}
+{% block main %}
+<h2 class="login-header">Create New Page</h2>
+<div id="main-wrapper">
+  <div id="main" class="container">
+    <div class="row">
+      <div class="12u">
+        <div class="content">
+          <!-- Content -->
+          <article class="box page-content">
+            <header>
+              <form class="login-container" action = "{% url 'clubs:create' %}" method = "POST">
+              {% csrf_token %}
+              {% load nbsp%}
+                  <p><input type="text" placeholder="Title" name="title"/></p>
+                  <textarea id="widgEditor" name="text" placeholder="Text"></textarea>
+                  <!-- SAVE Button -->
+                  <ul class="actions">
+                  <li><input type="submit" value=" SAVE " class="button big"/></li>
+                </ul>
+                </form>
+            </header>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'index_template.html' %}
+
+{% block title %}高中生活百科{% endblock %}
+
+{% block main %}
+<!-- Banner -->
+	<div id="banner-wrapper">
+		<section id="banner">
+			{% if request.user.is_authenticated%}
+				<h2>Hello, {{request.user}}</h2>
+			{% else %}
+				<h2>Welcome to 高中生活百科</h2>
+			{% endif %}
+			
+			<p>開放自由編輯，取得高中資訊最方便的渠道</p>
+
+			{% if not request.user.is_authenticated %}
+			<div class="row">
+				<div class="12u">
+					<ul class="actions">
+						<li>
+						<a href="{% url 'explain' %}" class="button big">CLICK TO START</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			{% endif %}
+		</section>
+	</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'club_base.html' %}
+{% block main %}
+<div id="main-wrapper">
+			<div id="main" class="container">
+				<div class="row">
+					<div class="12u">
+						<div class="content">
+							<!-- Content -->
+							<article class="box page-content">
+								<header>
+								<h2>{{paragraph.title|linebreaksbr}}</h2>
+								<p>{{paragraph.text|linebreaksbr}}</p>
+								</header>
+							</article>
+							<!-- Image -->
+							{% if paragraph.images_set.all %}
+							<ul>
+								{% for img in paragraph.images_set.all %}
+								<li>
+									
+										<img src = "{{ img.image.url }}" />
+									
+								</li>
+								{% endfor %}
+							</ul>
+							{% else %}
+							<p>
+								No Images.
+							</p>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="12u">
+						<ul class="actions">
+							<li><a href="{% url 'clubs:edit' paragraph.id %}" class="button big">EDIT THIS PAGE</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+{% endblock %}

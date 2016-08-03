@@ -1,0 +1,62 @@
+{% extends 'club_base.html' %}
+{% block main %}
+<h2 class="login-header">Edit this Page</h2>
+<div id="main-wrapper">
+	<div id="main" class="container">
+		<div class="row">
+			<div class="12u">
+				<div class="content">
+					<!-- Content -->
+					<article class="box page-content">
+						<header>
+							<form class="login-container" action = "{% url 'clubs:edit'  paragraph.id%}" method = "POST" enctype="multipart/form-data">{% csrf_token %}
+						    	{% load nbsp%}
+						    	<p><input type="text" value = {{paragraph.title}} name="title"/></p>
+						    	<textarea id="widgEditor" name="text">{{paragraph.text}}</textarea>
+						    	
+						    	<!--upload img-->
+		                        <p>{{ form.non_field_errors }}</p>
+		                        <p>{{ form.docfile.label_tag }} </p>
+		                        <p>
+		                                {{ form.docfile.errors }}
+		                                {{ form.docfile }}
+		                        </p>
+
+		                        <!--delete image-->
+				                {% if paragraph.images_set.all %}
+								<ul>
+									{% for img in paragraph.images_set.all %}
+									<li>
+										<a href= "{% url 'clubs:img_delete' %}">
+											<img src = "{{ img.image.url }}" />
+										</a>
+									</li>
+									{% endfor %}
+								</ul>
+								{% else %}
+								<p>
+									No Images.
+								</p>
+								{% endif %}
+						    	<!-- SAVE Button -->
+						    	<ul class="actions">
+									<li><input type="submit" value=" SAVE " class="button big"/></li>
+								</ul>
+					    	</form>
+
+					    	<!-- DELETE Button -->
+							<form action = "{% url 'clubs:delete' paragraph.id %}" method="POST">
+								{% csrf_token %}
+								<ul class="actions">
+									<li><input type="submit" value="DELETE" class="button big"></li>
+								</ul>
+							</form>
+						</header>
+					</article>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

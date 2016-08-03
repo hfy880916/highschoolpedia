@@ -1,0 +1,52 @@
+{% extends 'index_template.html' %}
+
+{% block title %}高中生活百科{% endblock %}
+
+{% block main %}
+<h2 class="login-header">Login</h2>
+  <div id="main-wrapper">
+    <div id="main" class="container">
+      <div class="row">
+        <div class="12u">
+          <div class="content">
+            <!-- Content -->
+            <article class="box page-content">
+              <header>
+                <form class="login-container" action ="{% url 'login' %}" method = "POST">
+                  {% if error %}
+                    <p><strong>{{error}}</strong></p>
+                  {% endif %}
+                  {% load nbsp%}
+                  {% csrf_token %}
+                  <p><input type="email" placeholder="Email" name="email"/></p>
+                  <p><input type="password" placeholder="Password" name="password"/></p>
+                  <input type="hidden" name="next" value="{{ from }}">
+
+                  <!-- LOG IN Button -->
+                  <ul class="actions">
+                    <li><input type="submit" value="  LOG IN  " class="button big"/></li>
+                  </ul>}
+                </form>
+                
+                <!-- REGISTER Button -->
+                <a href="{% url 'register'%}">
+                  <ul class="actions">
+                    <li><input type="submit" value="加入會員" class="button big"></li>
+                  </ul>
+                </a>
+
+                <!--Forget Password-->
+                <a href="{% url 'forget_password'%}">
+                  <ul class="actions">
+                    <li><input type="submit" value="forget password"></li>
+                  </ul>
+                </a>
+
+              </header>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
